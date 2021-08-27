@@ -133,6 +133,7 @@ class _$InvalidEmailCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$InvalidEmail<T> implements InvalidEmail<T> {
   const _$InvalidEmail({required this.failedValue});
 
@@ -253,6 +254,7 @@ class _$ShortPasswordCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$ShortPassword<T> implements ShortPassword<T> {
   const _$ShortPassword({required this.failedValue});
 

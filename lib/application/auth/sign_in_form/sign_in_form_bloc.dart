@@ -6,14 +6,16 @@ import 'package:firebase_todo/domain/auth/auth_failures.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facade.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  final IAuthFacade _authFacade;
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial());
+  final IAuthFacade _authFacade;
 
   @override
   Stream<SignInFormState> mapEventToState(
@@ -80,8 +82,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     yield state.copyWith(
       isSubmitting: false,
       showErrorMessages: true,
-      authFailureOrSuccessOption: optionOf(
-          failureOrSucces), //if null then none, if some then some (handy use of ternary)
+      authFailureOrSuccessOption: optionOf(failureOrSucces), //if null then none
+      //if some then some (handy use of ternary)
     );
   }
 }

@@ -5,12 +5,14 @@ import 'package:firebase_todo/domain/auth/i_auth_facade.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
+  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -64,7 +66,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       final googleUser = await _googleSignIn.signIn();
 
       if (googleUser == null) {
-        return left(AuthFailure.cancelledByUser());
+        return left(const AuthFailure.cancelledByUser());
       }
       final googleAuthentication = await googleUser.authentication;
       final authCredential = GoogleAuthProvider.credential(

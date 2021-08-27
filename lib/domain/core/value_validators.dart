@@ -4,7 +4,7 @@ import 'package:firebase_todo/domain/core/core.dart';
 Either<ValueFailure<String>, String> validateEmailAddress({
   String? email,
 }) {
-  const emailRegex = r"""^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$""";
+  const emailRegex = r'''^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$''';
   if (RegExp(emailRegex).hasMatch(email!)) {
     return right(email);
   } else {
