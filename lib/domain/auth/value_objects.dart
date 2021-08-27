@@ -5,8 +5,8 @@ import 'package:firebase_todo/domain/core/value_objects.dart';
 class EmailAddress extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
-  factory EmailAddress(String input) {
-    return EmailAddress._(validateEmailAddress(input));
+  factory EmailAddress({String? email}) {
+    return EmailAddress._(validateEmailAddress(email: email));
   }
   const EmailAddress._(this.value);
 }
@@ -14,8 +14,8 @@ class EmailAddress extends ValueObject<String> {
 class Password extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
-  factory Password(String input) {
-    return Password._(validatePassword(input));
+  factory Password({String? password}) {
+    return Password._(validatePassword(password: password));
   }
   const Password._(this.value);
 }

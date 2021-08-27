@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   firebase_core: ^1.0.3
   firebase_auth: ^1.0.3
+  # flutter_riverpod: ^1.0.0-dev.2
+  flutter_bloc: ^7.2.0
   cloud_firestore: ^1.0.4
   dartz: ^0.10.0
   freezed_annotation: ^0.14.1
