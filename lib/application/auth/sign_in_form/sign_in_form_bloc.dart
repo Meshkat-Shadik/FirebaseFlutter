@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/auth/auth_failures.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facade.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -79,9 +80,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         password: state.password,
       );
     }
+    else{
+    //  failureOrSucces = none();
+    }
     yield state.copyWith(
       isSubmitting: false,
-      showErrorMessages: true,
+      showErrorMessages: AutovalidateMode.always,
       authFailureOrSuccessOption: optionOf(failureOrSucces), //if null then none
       //if some then some (handy use of ternary)
     );

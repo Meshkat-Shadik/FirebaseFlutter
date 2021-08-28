@@ -14,3 +14,5 @@ linter:
   rules:
     public_member_api_docs: false
     sort_pub_dependencies: false
+    use_key_in_widget_constructors: false
+    lines_longer_than_80_chars: false
