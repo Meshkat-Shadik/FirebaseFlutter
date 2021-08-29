@@ -3,7 +3,6 @@ import 'package:firebase_todo/domain/auth/auth_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facade.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 

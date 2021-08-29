@@ -70,11 +70,26 @@ class SignInForm extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock),
                   labelText: 'Password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      context.read<SignInFormBloc>().add(
+                            SignInFormEvent.showPasswordPressed(context
+                                .read<SignInFormBloc>()
+                                .state
+                                .showPassword),
+                          );
+                    },
+                    icon: context.read<SignInFormBloc>().state.showPassword ==
+                            true
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
+                  ),
                 ),
-                obscureText: true,
+                obscureText:
+                    !!context.read<SignInFormBloc>().state.showPassword,
                 autocorrect: false,
                 onChanged: (value) => context
                     .read<SignInFormBloc>()

@@ -29,6 +29,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           authFailureOrSuccessOption: none(), //resetting the previous response
         );
       },
+      showPasswordPressed: (e) async*{
+        yield state.copyWith(
+          showPassword: !e.isShow,
+          authFailureOrSuccessOption: none(),
+        );
+      },
       passwordChanged: (e) async* {
         yield state.copyWith(
           password: Password(password: e.password),
