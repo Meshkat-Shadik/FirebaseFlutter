@@ -36,6 +36,8 @@ class SignInForm extends StatelessWidget {
         );
       },
       builder: (context, state) {
+        // ignore: prefer_final_locals
+        var showPassword = context.read<SignInFormBloc>().state.showPassword;
         return Form(
           autovalidateMode: state.showErrorMessages,
           child: ListView(
@@ -52,8 +54,7 @@ class SignInForm extends StatelessWidget {
                   labelText: 'Email',
                 ),
                 autocorrect: false,
-                onChanged: (value) => context
-                    .read<SignInFormBloc>()
+                onChanged: (value) => BlocProvider.of<SignInFormBloc>(context)
                     .add(SignInFormEvent.emailChanged(value)),
                 validator: (_) => context
                     .read<SignInFormBloc>()
@@ -75,24 +76,20 @@ class SignInForm extends StatelessWidget {
                   labelText: 'Password',
                   suffixIcon: IconButton(
                     onPressed: () {
-                      context.read<SignInFormBloc>().add(
-                            SignInFormEvent.showPasswordPressed(context
-                                .read<SignInFormBloc>()
-                                .state
-                                .showPassword),
-                          );
+                      BlocProvider.of<SignInFormBloc>(context).add(
+                        SignInFormEvent.showPasswordPressed(showPassword),
+                      );
                     },
                     icon: context.read<SignInFormBloc>().state.showPassword ==
                             true
-                        ? const Icon(Icons.visibility)
-                        : const Icon(Icons.visibility_off),
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
                   ),
                 ),
                 obscureText:
-                    !!context.read<SignInFormBloc>().state.showPassword,
+                    !(!!context.read<SignInFormBloc>().state.showPassword),
                 autocorrect: false,
-                onChanged: (value) => context
-                    .read<SignInFormBloc>()
+                onChanged: (value) => BlocProvider.of<SignInFormBloc>(context)
                     .add(SignInFormEvent.passwordChanged(value)),
                 validator: (_) =>
                     context.read<SignInFormBloc>().state.password.value.fold(
