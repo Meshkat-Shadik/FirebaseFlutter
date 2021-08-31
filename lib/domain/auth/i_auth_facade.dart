@@ -4,7 +4,7 @@ import 'package:firebase_todo/domain/auth/user.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
 
 abstract class IAuthFacade {
-  Stream<Option<FirebaseUser>> getSignedInUser();
+  Future<Option<AsUser>> getSignedInUser();
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     required EmailAddress emailAddress,
     required Password password,

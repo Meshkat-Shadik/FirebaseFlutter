@@ -13,43 +13,41 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$FirebaseUserTearOff {
-  const _$FirebaseUserTearOff();
+class _$AsUserTearOff {
+  const _$AsUserTearOff();
 
-  _FirebaseUser call({required UniqueId id}) {
-    return _FirebaseUser(
+  _AsUser call({required UniqueId id}) {
+    return _AsUser(
       id: id,
     );
   }
 }
 
 /// @nodoc
-const $FirebaseUser = _$FirebaseUserTearOff();
+const $AsUser = _$AsUserTearOff();
 
 /// @nodoc
-mixin _$FirebaseUser {
+mixin _$AsUser {
   UniqueId get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FirebaseUserCopyWith<FirebaseUser> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AsUserCopyWith<AsUser> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FirebaseUserCopyWith<$Res> {
-  factory $FirebaseUserCopyWith(
-          FirebaseUser value, $Res Function(FirebaseUser) then) =
-      _$FirebaseUserCopyWithImpl<$Res>;
+abstract class $AsUserCopyWith<$Res> {
+  factory $AsUserCopyWith(AsUser value, $Res Function(AsUser) then) =
+      _$AsUserCopyWithImpl<$Res>;
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class _$FirebaseUserCopyWithImpl<$Res> implements $FirebaseUserCopyWith<$Res> {
-  _$FirebaseUserCopyWithImpl(this._value, this._then);
+class _$AsUserCopyWithImpl<$Res> implements $AsUserCopyWith<$Res> {
+  _$AsUserCopyWithImpl(this._value, this._then);
 
-  final FirebaseUser _value;
+  final AsUser _value;
   // ignore: unused_field
-  final $Res Function(FirebaseUser) _then;
+  final $Res Function(AsUser) _then;
 
   @override
   $Res call({
@@ -65,30 +63,27 @@ class _$FirebaseUserCopyWithImpl<$Res> implements $FirebaseUserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$FirebaseUserCopyWith<$Res>
-    implements $FirebaseUserCopyWith<$Res> {
-  factory _$FirebaseUserCopyWith(
-          _FirebaseUser value, $Res Function(_FirebaseUser) then) =
-      __$FirebaseUserCopyWithImpl<$Res>;
+abstract class _$AsUserCopyWith<$Res> implements $AsUserCopyWith<$Res> {
+  factory _$AsUserCopyWith(_AsUser value, $Res Function(_AsUser) then) =
+      __$AsUserCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$FirebaseUserCopyWithImpl<$Res> extends _$FirebaseUserCopyWithImpl<$Res>
-    implements _$FirebaseUserCopyWith<$Res> {
-  __$FirebaseUserCopyWithImpl(
-      _FirebaseUser _value, $Res Function(_FirebaseUser) _then)
-      : super(_value, (v) => _then(v as _FirebaseUser));
+class __$AsUserCopyWithImpl<$Res> extends _$AsUserCopyWithImpl<$Res>
+    implements _$AsUserCopyWith<$Res> {
+  __$AsUserCopyWithImpl(_AsUser _value, $Res Function(_AsUser) _then)
+      : super(_value, (v) => _then(v as _AsUser));
 
   @override
-  _FirebaseUser get _value => super._value as _FirebaseUser;
+  _AsUser get _value => super._value as _AsUser;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_FirebaseUser(
+    return _then(_AsUser(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -99,21 +94,21 @@ class __$FirebaseUserCopyWithImpl<$Res> extends _$FirebaseUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FirebaseUser implements _FirebaseUser {
-  const _$_FirebaseUser({required this.id});
+class _$_AsUser implements _AsUser {
+  const _$_AsUser({required this.id});
 
   @override
   final UniqueId id;
 
   @override
   String toString() {
-    return 'FirebaseUser(id: $id)';
+    return 'AsUser(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _FirebaseUser &&
+        (other is _AsUser &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -124,17 +119,16 @@ class _$_FirebaseUser implements _FirebaseUser {
 
   @JsonKey(ignore: true)
   @override
-  _$FirebaseUserCopyWith<_FirebaseUser> get copyWith =>
-      __$FirebaseUserCopyWithImpl<_FirebaseUser>(this, _$identity);
+  _$AsUserCopyWith<_AsUser> get copyWith =>
+      __$AsUserCopyWithImpl<_AsUser>(this, _$identity);
 }
 
-abstract class _FirebaseUser implements FirebaseUser {
-  const factory _FirebaseUser({required UniqueId id}) = _$_FirebaseUser;
+abstract class _AsUser implements AsUser {
+  const factory _AsUser({required UniqueId id}) = _$_AsUser;
 
   @override
   UniqueId get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FirebaseUserCopyWith<_FirebaseUser> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$AsUserCopyWith<_AsUser> get copyWith => throw _privateConstructorUsedError;
 }

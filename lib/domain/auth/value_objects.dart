@@ -34,5 +34,6 @@ class UniqueId extends ValueObject<String> {
     return UniqueId._(right(uniqueId));
   }
 
+  @override
   final Either<ValueFailure<String>, String> value;
 }

@@ -6,7 +6,7 @@ import 'package:firebase_todo/domain/auth/user.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import './firebase_user_mapper.dart';
+import 'package:firebase_todo/infrastructure/auth/firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -87,11 +87,10 @@ class FirebaseAuthFacade implements IAuthFacade {
         _firebaseAuth.signOut(),
       ]);
 
+  Stream<User?> get onAuthStateChanged => _firebaseAuth.authStateChanges();
+
   @override
-  Stream<Option<FirebaseUser>> getSignedInUser() async* {
-    final userStream = _firebaseAuth.authStateChanges();
-    await for (final user in userStream) {
-      yield optionOf(user?.toDomain());
-    }
+  Future<Option<AsUser>> getSignedInUser() async {
+    return optionOf(_firebaseAuth.currentUser?.toDomain());
   }
 }

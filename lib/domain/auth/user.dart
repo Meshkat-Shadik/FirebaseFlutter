@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 
 @freezed
-abstract class FirebaseUser with _$FirebaseUser {
-  const factory FirebaseUser({
+abstract class AsUser with _$AsUser {
+  const factory AsUser({
     required UniqueId id,
-  }) = _FirebaseUser;
+  }) = _AsUser;
 }
