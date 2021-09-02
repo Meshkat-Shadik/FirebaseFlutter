@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:another_flushbar/flushbar.dart';
 import 'package:firebase_todo/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,10 +39,11 @@ class SignInForm extends StatelessWidget {
       builder: (context, state) {
         // ignore: prefer_final_locals
         var showPassword = context.read<SignInFormBloc>().state.showPassword;
-        return Form(
-          autovalidateMode: state.showErrorMessages,
-          child: ListView(
-            children: [
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Form(
+            autovalidateMode: state.showErrorMessages,
+            child: ListView(children: [
               const Text(
                 '📝',
                 textAlign: TextAlign.center,
@@ -132,7 +134,11 @@ class SignInForm extends StatelessWidget {
                 },
                 child: const Text('SIGN IN WITH GOOGLE'),
               ),
-            ],
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8),
+                const CupertinoActivityIndicator(),
+              ],
+            ]),
           ),
         );
       },
