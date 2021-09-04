@@ -16,6 +16,11 @@ abstract class ValueObject<T> {
         );
   }
 
+  //only extracts the failure
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold(left, (r) => right(unit));
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
