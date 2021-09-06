@@ -11,3 +11,5 @@ class UnexpectedValueError extends Error {
         '$explanation Terminating!!.\n failure was: $valueFailure');
   }
 }
+
+class NotAuthenticatedError extends Error {}
