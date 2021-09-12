@@ -13,6 +13,6 @@ extension FirestoreX on FirebaseFirestore {
   }
 }
 
-extension DocReferenceX on DocumentReference{
+extension DocReferenceX on DocumentReference {
   CollectionReference get noteCollection => collection('notes');
 }

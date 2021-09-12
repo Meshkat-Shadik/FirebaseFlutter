@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 class EmailAddress extends ValueObject<String> {
   factory EmailAddress({String? email}) {
-    return EmailAddress._(validateEmailAddress(email: email));
+    return EmailAddress._(validateEmailAddress(email: email!.trim()));
   }
   const EmailAddress._(this.value);
   @override
@@ -14,7 +14,7 @@ class EmailAddress extends ValueObject<String> {
 
 class Password extends ValueObject<String> {
   factory Password({String? password}) {
-    return Password._(validatePassword(password: password));
+    return Password._(validatePassword(password: password!.trim()));
   }
   const Password._(this.value);
   @override
