@@ -10,5 +10,9 @@ abstract class FirebaseInjectableModule {
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @lazySingleton
-  FirebaseFirestore get firestore => FirebaseFirestore.instance;
+  FirebaseFirestore get firestore {
+    FirebaseFirestore.instance.settings =
+        const Settings(persistenceEnabled: false);
+    return FirebaseFirestore.instance;
+  }
 }

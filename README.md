@@ -1,16 +1,22 @@
-# firebase_todo
+# Domain Driven Design (DDD) with Firebase
 
-A new Flutter project.
+## Class 20 : Placeholder Note Cards
 
-## Getting Started
+_problems i've faced_
 
-This project is a starting point for a Flutter application.
+1.  Missing yield\* at stream functions in note_repositories.dart file
+2.  Changing from
 
-A few resources to get you started if this is your first Flutter project:
+    ```dart
+            'todo':todo
+    ```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+    to
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    ```dart
+     'todos': instance.todos?.map((e) => e.toJson()).toList()
+    ```
+
+    todo_dtos.g.dart
+
+3.  The reason was that I has only 1 todos in my note, and I manually set this todo as a map instead of list of map. So , make sure your todos field is first an list and then enter each todo element as a map. That should solve the problem
