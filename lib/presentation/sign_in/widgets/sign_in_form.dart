@@ -7,12 +7,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class SignInForm extends StatelessWidget {
+class SignInForm extends HookWidget {
   const SignInForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final toogleShowPassword = useState(false);
+
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
@@ -42,8 +45,6 @@ class SignInForm extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        // ignore: prefer_final_locals
-        var showPassword = context.read<SignInFormBloc>().state.showPassword;
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Form(
@@ -83,18 +84,14 @@ class SignInForm extends StatelessWidget {
                   labelText: 'Password',
                   suffixIcon: IconButton(
                     onPressed: () {
-                      BlocProvider.of<SignInFormBloc>(context).add(
-                        SignInFormEvent.showPasswordPressed(showPassword),
-                      );
+                      toogleShowPassword.value = !toogleShowPassword.value;
                     },
-                    icon: context.read<SignInFormBloc>().state.showPassword ==
-                            true
+                    icon: toogleShowPassword.value == true
                         ? const Icon(Icons.visibility_off)
                         : const Icon(Icons.visibility),
                   ),
                 ),
-                obscureText:
-                    !(!!context.read<SignInFormBloc>().state.showPassword),
+                obscureText: !(!!toogleShowPassword.value),
                 autocorrect: false,
                 onChanged: (value) => BlocProvider.of<SignInFormBloc>(context)
                     .add(SignInFormEvent.passwordChanged(value)),

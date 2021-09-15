@@ -6,7 +6,6 @@ class SignInFormState with _$SignInFormState {
     required EmailAddress emailAddress,
     required Password password,
     required bool isSubmitting,
-    required bool showPassword,
     required AutovalidateMode showErrorMessages,
     required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
   }) = _SignInFormState;
@@ -15,7 +14,6 @@ class SignInFormState with _$SignInFormState {
         emailAddress: EmailAddress(email: ''),
         password: Password(password: ''),
         isSubmitting: false,
-        showPassword: false,
         showErrorMessages: AutovalidateMode.disabled,
         authFailureOrSuccessOption: none(),
       );

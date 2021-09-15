@@ -39,12 +39,6 @@ class _$SignInFormEventTearOff {
   SignInWithGooglePressed signInWithGooglePressed() {
     return const SignInWithGooglePressed();
   }
-
-  ShowPasswordPressed showPasswordPressed(bool isShow) {
-    return ShowPasswordPressed(
-      isShow,
-    );
-  }
 }
 
 /// @nodoc
@@ -59,7 +53,6 @@ mixin _$SignInFormEvent {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,7 +62,6 @@ mixin _$SignInFormEvent {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,7 +75,6 @@ mixin _$SignInFormEvent {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,7 +86,6 @@ mixin _$SignInFormEvent {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,7 +178,6 @@ class _$EmailChanged implements EmailChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) {
     return emailChanged(email);
   }
@@ -201,7 +190,6 @@ class _$EmailChanged implements EmailChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -221,7 +209,6 @@ class _$EmailChanged implements EmailChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) {
     return emailChanged(this);
   }
@@ -236,7 +223,6 @@ class _$EmailChanged implements EmailChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -326,7 +312,6 @@ class _$PasswrodChanged implements PasswrodChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) {
     return passwordChanged(password);
   }
@@ -339,7 +324,6 @@ class _$PasswrodChanged implements PasswrodChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -359,7 +343,6 @@ class _$PasswrodChanged implements PasswrodChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) {
     return passwordChanged(this);
   }
@@ -374,7 +357,6 @@ class _$PasswrodChanged implements PasswrodChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -443,7 +425,6 @@ class _$RegisterWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) {
     return registerWithEmailAndPasswordPressed();
   }
@@ -456,7 +437,6 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -476,7 +456,6 @@ class _$RegisterWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) {
     return registerWithEmailAndPasswordPressed(this);
   }
@@ -491,7 +470,6 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -556,7 +534,6 @@ class _$SignInWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) {
     return signInWithEmailAndPasswordPressed();
   }
@@ -569,7 +546,6 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -589,7 +565,6 @@ class _$SignInWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) {
     return signInWithEmailAndPasswordPressed(this);
   }
@@ -604,7 +579,6 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -664,7 +638,6 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
   }) {
     return signInWithGooglePressed();
   }
@@ -677,7 +650,6 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -697,7 +669,6 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
   }) {
     return signInWithGooglePressed(this);
   }
@@ -712,7 +683,6 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -727,143 +697,6 @@ abstract class SignInWithGooglePressed implements SignInFormEvent {
 }
 
 /// @nodoc
-abstract class $ShowPasswordPressedCopyWith<$Res> {
-  factory $ShowPasswordPressedCopyWith(
-          ShowPasswordPressed value, $Res Function(ShowPasswordPressed) then) =
-      _$ShowPasswordPressedCopyWithImpl<$Res>;
-  $Res call({bool isShow});
-}
-
-/// @nodoc
-class _$ShowPasswordPressedCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res>
-    implements $ShowPasswordPressedCopyWith<$Res> {
-  _$ShowPasswordPressedCopyWithImpl(
-      ShowPasswordPressed _value, $Res Function(ShowPasswordPressed) _then)
-      : super(_value, (v) => _then(v as ShowPasswordPressed));
-
-  @override
-  ShowPasswordPressed get _value => super._value as ShowPasswordPressed;
-
-  @override
-  $Res call({
-    Object? isShow = freezed,
-  }) {
-    return _then(ShowPasswordPressed(
-      isShow == freezed
-          ? _value.isShow
-          : isShow // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ShowPasswordPressed implements ShowPasswordPressed {
-  const _$ShowPasswordPressed(this.isShow);
-
-  @override
-  final bool isShow;
-
-  @override
-  String toString() {
-    return 'SignInFormEvent.showPasswordPressed(isShow: $isShow)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is ShowPasswordPressed &&
-            (identical(other.isShow, isShow) ||
-                const DeepCollectionEquality().equals(other.isShow, isShow)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isShow);
-
-  @JsonKey(ignore: true)
-  @override
-  $ShowPasswordPressedCopyWith<ShowPasswordPressed> get copyWith =>
-      _$ShowPasswordPressedCopyWithImpl<ShowPasswordPressed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String email) emailChanged,
-    required TResult Function(String password) passwordChanged,
-    required TResult Function() registerWithEmailAndPasswordPressed,
-    required TResult Function() signInWithEmailAndPasswordPressed,
-    required TResult Function() signInWithGooglePressed,
-    required TResult Function(bool isShow) showPasswordPressed,
-  }) {
-    return showPasswordPressed(isShow);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? emailChanged,
-    TResult Function(String password)? passwordChanged,
-    TResult Function()? registerWithEmailAndPasswordPressed,
-    TResult Function()? signInWithEmailAndPasswordPressed,
-    TResult Function()? signInWithGooglePressed,
-    TResult Function(bool isShow)? showPasswordPressed,
-    required TResult orElse(),
-  }) {
-    if (showPasswordPressed != null) {
-      return showPasswordPressed(isShow);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EmailChanged value) emailChanged,
-    required TResult Function(PasswrodChanged value) passwordChanged,
-    required TResult Function(RegisterWithEmailAndPasswordPressed value)
-        registerWithEmailAndPasswordPressed,
-    required TResult Function(SignInWithEmailAndPasswordPressed value)
-        signInWithEmailAndPasswordPressed,
-    required TResult Function(SignInWithGooglePressed value)
-        signInWithGooglePressed,
-    required TResult Function(ShowPasswordPressed value) showPasswordPressed,
-  }) {
-    return showPasswordPressed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmailChanged value)? emailChanged,
-    TResult Function(PasswrodChanged value)? passwordChanged,
-    TResult Function(RegisterWithEmailAndPasswordPressed value)?
-        registerWithEmailAndPasswordPressed,
-    TResult Function(SignInWithEmailAndPasswordPressed value)?
-        signInWithEmailAndPasswordPressed,
-    TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
-    TResult Function(ShowPasswordPressed value)? showPasswordPressed,
-    required TResult orElse(),
-  }) {
-    if (showPasswordPressed != null) {
-      return showPasswordPressed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ShowPasswordPressed implements SignInFormEvent {
-  const factory ShowPasswordPressed(bool isShow) = _$ShowPasswordPressed;
-
-  bool get isShow => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ShowPasswordPressedCopyWith<ShowPasswordPressed> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$SignInFormStateTearOff {
   const _$SignInFormStateTearOff();
 
@@ -871,14 +704,12 @@ class _$SignInFormStateTearOff {
       {required EmailAddress emailAddress,
       required Password password,
       required bool isSubmitting,
-      required bool showPassword,
       required AutovalidateMode showErrorMessages,
       required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
       isSubmitting: isSubmitting,
-      showPassword: showPassword,
       showErrorMessages: showErrorMessages,
       authFailureOrSuccessOption: authFailureOrSuccessOption,
     );
@@ -893,7 +724,6 @@ mixin _$SignInFormState {
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  bool get showPassword => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -912,7 +742,6 @@ abstract class $SignInFormStateCopyWith<$Res> {
       {EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
-      bool showPassword,
       AutovalidateMode showErrorMessages,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
@@ -931,7 +760,6 @@ class _$SignInFormStateCopyWithImpl<$Res>
     Object? emailAddress = freezed,
     Object? password = freezed,
     Object? isSubmitting = freezed,
-    Object? showPassword = freezed,
     Object? showErrorMessages = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
@@ -947,10 +775,6 @@ class _$SignInFormStateCopyWithImpl<$Res>
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showPassword: showPassword == freezed
-          ? _value.showPassword
-          : showPassword // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -975,7 +799,6 @@ abstract class _$SignInFormStateCopyWith<$Res>
       {EmailAddress emailAddress,
       Password password,
       bool isSubmitting,
-      bool showPassword,
       AutovalidateMode showErrorMessages,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
 }
@@ -996,7 +819,6 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object? emailAddress = freezed,
     Object? password = freezed,
     Object? isSubmitting = freezed,
-    Object? showPassword = freezed,
     Object? showErrorMessages = freezed,
     Object? authFailureOrSuccessOption = freezed,
   }) {
@@ -1012,10 +834,6 @@ class __$SignInFormStateCopyWithImpl<$Res>
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showPassword: showPassword == freezed
-          ? _value.showPassword
-          : showPassword // ignore: cast_nullable_to_non_nullable
               as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -1036,7 +854,6 @@ class _$_SignInFormState implements _SignInFormState {
       {required this.emailAddress,
       required this.password,
       required this.isSubmitting,
-      required this.showPassword,
       required this.showErrorMessages,
       required this.authFailureOrSuccessOption});
 
@@ -1047,15 +864,13 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final bool isSubmitting;
   @override
-  final bool showPassword;
-  @override
   final AutovalidateMode showErrorMessages;
   @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'SignInFormState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, showPassword: $showPassword, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignInFormState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -1071,9 +886,6 @@ class _$_SignInFormState implements _SignInFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
-            (identical(other.showPassword, showPassword) ||
-                const DeepCollectionEquality()
-                    .equals(other.showPassword, showPassword)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -1090,7 +902,6 @@ class _$_SignInFormState implements _SignInFormState {
       const DeepCollectionEquality().hash(emailAddress) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
-      const DeepCollectionEquality().hash(showPassword) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
@@ -1105,7 +916,6 @@ abstract class _SignInFormState implements SignInFormState {
       {required EmailAddress emailAddress,
       required Password password,
       required bool isSubmitting,
-      required bool showPassword,
       required AutovalidateMode showErrorMessages,
       required Option<Either<AuthFailure, Unit>>
           authFailureOrSuccessOption}) = _$_SignInFormState;
@@ -1116,8 +926,6 @@ abstract class _SignInFormState implements SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
-  @override
-  bool get showPassword => throw _privateConstructorUsedError;
   @override
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   @override

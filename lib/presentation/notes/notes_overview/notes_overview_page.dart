@@ -4,6 +4,7 @@ import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart'
 import 'package:firebase_todo/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
+import 'package:firebase_todo/presentation/notes/notes_overview/widgets/uncompleted_switch_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
@@ -66,10 +67,7 @@ class NotesOverviewPage extends StatelessWidget {
               icon: const Icon(Icons.exit_to_app),
             ),
             actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.indeterminate_check_box),
-              ),
+              UncompletedSwitch(),
             ],
           ),
           body: const NotesOverviewBody(),
