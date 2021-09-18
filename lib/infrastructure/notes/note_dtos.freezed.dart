@@ -24,8 +24,8 @@ class _$NoteDtoTearOff {
       {@JsonKey(ignore: true) String? id,
       String? body,
       int? color,
-      List<TodoItemDto>? todos,
-      @ServerTimeStampConverter() required FieldValue serverTimeStamp}) {
+      List<TodoItemDto?>? todos,
+      @ServerTimeStampConverter() required FieldValue? serverTimeStamp}) {
     return _NoteDto(
       id: id,
       body: body,
@@ -49,9 +49,9 @@ mixin _$NoteDto {
   String? get id => throw _privateConstructorUsedError;
   String? get body => throw _privateConstructorUsedError;
   int? get color => throw _privateConstructorUsedError;
-  List<TodoItemDto>? get todos => throw _privateConstructorUsedError;
+  List<TodoItemDto?>? get todos => throw _privateConstructorUsedError;
   @ServerTimeStampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
+  FieldValue? get serverTimeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,8 +66,8 @@ abstract class $NoteDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String? body,
       int? color,
-      List<TodoItemDto>? todos,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+      List<TodoItemDto?>? todos,
+      @ServerTimeStampConverter() FieldValue? serverTimeStamp});
 }
 
 /// @nodoc
@@ -102,11 +102,11 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
       todos: todos == freezed
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as List<TodoItemDto>?,
+              as List<TodoItemDto?>?,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
+              as FieldValue?,
     ));
   }
 }
@@ -120,8 +120,8 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String? body,
       int? color,
-      List<TodoItemDto>? todos,
-      @ServerTimeStampConverter() FieldValue serverTimeStamp});
+      List<TodoItemDto?>? todos,
+      @ServerTimeStampConverter() FieldValue? serverTimeStamp});
 }
 
 /// @nodoc
@@ -157,11 +157,11 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
       todos: todos == freezed
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as List<TodoItemDto>?,
+              as List<TodoItemDto?>?,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
-              as FieldValue,
+              as FieldValue?,
     ));
   }
 }
@@ -188,10 +188,10 @@ class _$_NoteDto extends _NoteDto {
   @override
   final int? color;
   @override
-  final List<TodoItemDto>? todos;
+  final List<TodoItemDto?>? todos;
   @override
   @ServerTimeStampConverter()
-  final FieldValue serverTimeStamp;
+  final FieldValue? serverTimeStamp;
 
   @override
   String toString() {
@@ -240,8 +240,8 @@ abstract class _NoteDto extends NoteDto {
           {@JsonKey(ignore: true) String? id,
           String? body,
           int? color,
-          List<TodoItemDto>? todos,
-          @ServerTimeStampConverter() required FieldValue serverTimeStamp}) =
+          List<TodoItemDto?>? todos,
+          @ServerTimeStampConverter() required FieldValue? serverTimeStamp}) =
       _$_NoteDto;
   const _NoteDto._() : super._();
 
@@ -255,10 +255,10 @@ abstract class _NoteDto extends NoteDto {
   @override
   int? get color => throw _privateConstructorUsedError;
   @override
-  List<TodoItemDto>? get todos => throw _privateConstructorUsedError;
+  List<TodoItemDto?>? get todos => throw _privateConstructorUsedError;
   @override
   @ServerTimeStampConverter()
-  FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
+  FieldValue? get serverTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NoteDtoCopyWith<_NoteDto> get copyWith =>

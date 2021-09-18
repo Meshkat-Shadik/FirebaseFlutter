@@ -62,7 +62,7 @@ class NoteColor extends ValueObject<Color> {
 
 class ListThree<T> extends ValueObject<KtList<T>> {
   factory ListThree(KtList<T> input) {
-    return ListThree<T>._(
+    return ListThree._(
       validateMaxListLength(input, maxLength),
     );
   }

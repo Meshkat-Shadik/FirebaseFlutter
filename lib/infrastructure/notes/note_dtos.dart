@@ -27,8 +27,8 @@ abstract class NoteDto implements _$NoteDto {
     @JsonKey(ignore: true) String? id,
     @required String? body,
     @required int? color,
-    @required List<TodoItemDto>? todos,
-    @ServerTimeStampConverter() required FieldValue serverTimeStamp,
+    @required List<TodoItemDto?>? todos,
+    @ServerTimeStampConverter() required FieldValue? serverTimeStamp,
   }) = _NoteDto;
 
   factory NoteDto.fromDomain(Note note) {
@@ -58,20 +58,20 @@ abstract class NoteDto implements _$NoteDto {
       id: UniqueId.fromUniqueString(id!),
       body: NoteBody(body!),
       color: NoteColor(Color(color!)),
-      todos: ListThree(todos!.map((dto) => dto.toDomain()).toImmutableList()),
+      todos: ListThree(todos!.map((dto) => dto!.toDomain()).toImmutableList()),
     );
   }
 }
 
-class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
+class ServerTimeStampConverter implements JsonConverter<FieldValue?, Object?> {
   const ServerTimeStampConverter();
   @override
-  FieldValue fromJson(Object json) {
+  FieldValue? fromJson(Object? json) {
     return FieldValue.serverTimestamp();
   }
 
   @override
-  Object toJson(FieldValue fieldValue) => fieldValue;
+  Object? toJson(FieldValue? fieldValue) => fieldValue;
 }
 
 @freezed

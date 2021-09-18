@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/auth/value_objects.dart';
 import 'package:firebase_todo/domain/core/core.dart';
+
 import 'package:firebase_todo/domain/notes/todo_item.dart';
 import 'package:firebase_todo/domain/notes/value_objectes.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,7 +29,7 @@ abstract class Note implements _$Note {
   //check all of the properties are valid
   Option<ValueFailure<dynamic>> get failureOption {
     return body.failureOrUnit
-        .andThen(todos.failureOrUnit)
+        .andThen<Unit>(todos.failureOrUnit)
         .andThen<Unit>(
           todos
               .getOrCrash()
@@ -36,9 +37,10 @@ abstract class Note implements _$Note {
               .filter((o) => o.isSome())
               .getOrElse(0, (_) => none())
               //checking atleast 1 element. if not then none if yes then it's valid
-              .fold(() => right(unit), left),
+              .fold(() => right(unit), (l) => left(l as ValueFailure<String>)),
         )
-        .fold(some, (r) => none());
+        .map((r) => null)
+        .fold((f) => some(f as ValueFailure<String>), (r) => none());
   }
 }
 //why not body.value like the todo_item entity

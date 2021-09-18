@@ -33,7 +33,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
           () => state, //no change
           (initialNote) => state.copyWith(
             note: initialNote,
-            isEditing: false,
+            isEditing: true,
           ),
         );
       },
@@ -42,6 +42,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
           note: state.note.copyWith(
             body: NoteBody(e.bodyStr),
           ),
+          saveFailureOrSuccessOption: none(),
         );
       },
       colorChanged: (e) async* {
@@ -59,12 +60,15 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
         );
       },
       saved: (e) async* {
+      //  print(state.note.failureOption);
+      
         Either<NoteFailure, Unit>? failureOrSuccess;
 
         yield state.copyWith(
           isSaving: true,
           saveFailureOrSuccessOption: none(),
         );
+
         if (state.note.failureOption.isNone()) {
           failureOrSuccess = state.isEditing
               ? await _noteRepository.update(state.note)
@@ -73,6 +77,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
 
         yield state.copyWith(
             isSaving: false,
+            showErrorMessages: true,
             saveFailureOrSuccessOption: optionOf(failureOrSuccess));
       },
     );

@@ -4,6 +4,8 @@ import 'package:firebase_todo/domain/notes/todo_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:firebase_todo/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({
@@ -17,7 +19,7 @@ class NoteCard extends StatelessWidget {
       color: note.color.getOrCrash(),
       child: InkWell(
         onTap: () {
-          //TODO: Implement Navigation
+          context.router.push(NoteFormPageRoute(editedNote: note));
         },
         onLongPress: () {
           _showDeletionDialog(
