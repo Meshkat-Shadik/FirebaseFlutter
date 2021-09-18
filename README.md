@@ -1,6 +1,12 @@
 # Domain Driven Design (DDD) with Firebase
 
+
 ## Class 20 : Placeholder Note Cards
+
+_firebase store snapshot_
+![image](https://user-images.githubusercontent.com/31488481/133832687-9f1c4dbb-8707-4553-8207-53877870a382.png)
+
+
 
 _problems i've faced_
 
