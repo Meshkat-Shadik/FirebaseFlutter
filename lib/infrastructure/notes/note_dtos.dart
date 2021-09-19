@@ -33,6 +33,7 @@ abstract class NoteDto implements _$NoteDto {
 
   factory NoteDto.fromDomain(Note note) {
     return NoteDto(
+      id: note.id.getOrCrash(),
       body: note.body.getOrCrash(),
       color: note.color.getOrCrash().value,
       todos: note.todos

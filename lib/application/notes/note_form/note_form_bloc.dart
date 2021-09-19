@@ -9,6 +9,7 @@ import 'package:firebase_todo/domain/notes/note_failure.dart';
 import 'package:firebase_todo/domain/notes/value_objectes.dart';
 import 'package:firebase_todo/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
@@ -77,7 +78,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
 
         yield state.copyWith(
             isSaving: false,
-            showErrorMessages: true,
+            showErrorMessages: AutovalidateMode.always,
             saveFailureOrSuccessOption: optionOf(failureOrSuccess));
       },
     );
