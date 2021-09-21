@@ -1,12 +1,9 @@
 # Domain Driven Design (DDD) with Firebase
 
-
 ## Class 20 : Placeholder Note Cards
 
 _firebase store snapshot_
 ![image](https://user-images.githubusercontent.com/31488481/133832687-9f1c4dbb-8707-4553-8207-53877870a382.png)
-
-
 
 _problems i've faced_
 
@@ -27,7 +24,7 @@ _problems i've faced_
 
 3.  The reason was that I has only 1 todos in my note, and I manually set this todo as a map instead of list of map. So , make sure your todos field is first an list and then enter each todo element as a map. That should solve the problem.
 
-## class 24: Note Form Page
+## Class 24: Note Form Page
 
 When I pressed **update** (blank screen checkbox) I've got an error says
 
@@ -80,3 +77,12 @@ But, **left** returns a result of whole **Either<L, R> left<L, R>(L l)**
 type that means we have to patch the value by hand. And when it is dynamic value it can't work the way we want.
 
 For this, we have to convert **Left** from **left** and vice-versa.
+
+## Class 28: Adding Todos UI
+
+ - To add extension methods, we must have to add import path of the extension.
+
+ - context.formTodos.plusElement may not be available because of missing import statement , 
+ ```dart
+ import 'package:kt_dart/kt.dart';
+ ```

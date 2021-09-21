@@ -10,39 +10,53 @@ class BodyField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _textEditingController = useTextEditingController();
-    return BlocListener<NoteFormBloc, NoteFormState>(
+    return BlocConsumer<NoteFormBloc, NoteFormState>(
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         _textEditingController.text = state.note.body.getOrCrash();
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Note',
-              counterText: '',
-            ),
-            controller: _textEditingController,
-            maxLength: NoteBody.maxLength,
-            maxLines: null,
-            minLines: 5,
-            onChanged: (value) => BlocProvider.of<NoteFormBloc>(context).add(
-                  NoteFormEvent.bodyPressed(value),
-                ),
-            validator: (_) => BlocProvider.of<NoteFormBloc>(context)
-                .state
-                .note
-                .body
-                .value
-                .fold(
-                  (f) => f.maybeMap(
-                    empty: (f) => 'Can not be empty',
-                    exceedingLength: (f) => 'Exceeding length, max ${f.max}',
-                    orElse: () {},
+      buildWhen: (p, c) =>
+          p.isEditing != c.isEditing || p.note.color != c.note.color,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: TextFormField(
+              decoration: InputDecoration(
+                fillColor: BlocProvider.of<NoteFormBloc>(context)
+                    .state
+                    .note
+                    .color
+                    .value
+                    .fold(
+                      (_) {},
+                      (color) => color,
+                    ),
+                filled: true,
+                labelText: 'Note',
+                counterText: '',
+              ),
+              controller: _textEditingController,
+              maxLength: NoteBody.maxLength,
+              maxLines: null,
+              minLines: 5,
+              onChanged: (value) => BlocProvider.of<NoteFormBloc>(context).add(
+                    NoteFormEvent.bodyPressed(value),
                   ),
-                  (r) {},
-                )),
-      ),
+              validator: (_) => BlocProvider.of<NoteFormBloc>(context)
+                  .state
+                  .note
+                  .body
+                  .value
+                  .fold(
+                    (f) => f.maybeMap(
+                      empty: (f) => 'Can not be empty',
+                      exceedingLength: (f) => 'Exceeding length, max ${f.max}',
+                      orElse: () {},
+                    ),
+                    (r) {},
+                  )),
+        );
+      },
     );
   }
 }
