@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'note_watcher_bloc.dart';
 
@@ -45,6 +46,14 @@ mixin _$NoteWatcherEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllstarted,
+    TResult Function()? watchUncompletedstarted,
+    TResult Function(Either<NoteFailure, KtList<Note>> failureOrNotes)?
+        noteReceived,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllstarted,
     TResult Function()? watchUncompletedstarted,
@@ -59,6 +68,13 @@ mixin _$NoteWatcherEvent {
     required TResult Function(_WatchUncompletedstarted value)
         watchUncompletedstarted,
     required TResult Function(_NoteReceived value) noteReceived,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllstarted,
+    TResult Function(_WatchUncompletedstarted value)? watchUncompletedstarted,
+    TResult Function(_NoteReceived value)? noteReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +154,17 @@ class _$_WatchAllStarted implements _WatchAllStarted {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllstarted,
+    TResult Function()? watchUncompletedstarted,
+    TResult Function(Either<NoteFailure, KtList<Note>> failureOrNotes)?
+        noteReceived,
+  }) {
+    return watchAllstarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllstarted,
     TResult Function()? watchUncompletedstarted,
@@ -160,6 +187,16 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     required TResult Function(_NoteReceived value) noteReceived,
   }) {
     return watchAllstarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllstarted,
+    TResult Function(_WatchUncompletedstarted value)? watchUncompletedstarted,
+    TResult Function(_NoteReceived value)? noteReceived,
+  }) {
+    return watchAllstarted?.call(this);
   }
 
   @override
@@ -232,6 +269,17 @@ class _$_WatchUncompletedstarted implements _WatchUncompletedstarted {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllstarted,
+    TResult Function()? watchUncompletedstarted,
+    TResult Function(Either<NoteFailure, KtList<Note>> failureOrNotes)?
+        noteReceived,
+  }) {
+    return watchUncompletedstarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllstarted,
     TResult Function()? watchUncompletedstarted,
@@ -254,6 +302,16 @@ class _$_WatchUncompletedstarted implements _WatchUncompletedstarted {
     required TResult Function(_NoteReceived value) noteReceived,
   }) {
     return watchUncompletedstarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllstarted,
+    TResult Function(_WatchUncompletedstarted value)? watchUncompletedstarted,
+    TResult Function(_NoteReceived value)? noteReceived,
+  }) {
+    return watchUncompletedstarted?.call(this);
   }
 
   @override
@@ -352,6 +410,17 @@ class _$_NoteReceived implements _NoteReceived {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? watchAllstarted,
+    TResult Function()? watchUncompletedstarted,
+    TResult Function(Either<NoteFailure, KtList<Note>> failureOrNotes)?
+        noteReceived,
+  }) {
+    return noteReceived?.call(failureOrNotes);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? watchAllstarted,
     TResult Function()? watchUncompletedstarted,
@@ -374,6 +443,16 @@ class _$_NoteReceived implements _NoteReceived {
     required TResult Function(_NoteReceived value) noteReceived,
   }) {
     return noteReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_WatchAllStarted value)? watchAllstarted,
+    TResult Function(_WatchUncompletedstarted value)? watchUncompletedstarted,
+    TResult Function(_NoteReceived value)? noteReceived,
+  }) {
+    return noteReceived?.call(this);
   }
 
   @override
@@ -441,6 +520,14 @@ mixin _$NoteWatcherState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(KtList<Note> notes)? loadSucess,
+    TResult Function(NoteFailure noteFailure)? loadFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
@@ -455,6 +542,14 @@ mixin _$NoteWatcherState {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSucess value) loadSucess,
     required TResult Function(_LoadFailure value) loadFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSucess value)? loadSucess,
+    TResult Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -532,6 +627,17 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(KtList<Note> notes)? loadSucess,
+    TResult Function(NoteFailure noteFailure)? loadFailure,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
@@ -554,6 +660,17 @@ class _$_Initial implements _Initial {
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSucess value)? loadSucess,
+    TResult Function(_LoadFailure value)? loadFailure,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -626,6 +743,17 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(KtList<Note> notes)? loadSucess,
+    TResult Function(NoteFailure noteFailure)? loadFailure,
+  }) {
+    return loadInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
@@ -648,6 +776,17 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSucess value)? loadSucess,
+    TResult Function(_LoadFailure value)? loadFailure,
+  }) {
+    return loadInProgress?.call(this);
   }
 
   @override
@@ -745,6 +884,17 @@ class _$_LoadSucess implements _LoadSucess {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(KtList<Note> notes)? loadSucess,
+    TResult Function(NoteFailure noteFailure)? loadFailure,
+  }) {
+    return loadSucess?.call(notes);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
@@ -767,6 +917,17 @@ class _$_LoadSucess implements _LoadSucess {
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadSucess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSucess value)? loadSucess,
+    TResult Function(_LoadFailure value)? loadFailure,
+  }) {
+    return loadSucess?.call(this);
   }
 
   @override
@@ -879,6 +1040,17 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(KtList<Note> notes)? loadSucess,
+    TResult Function(NoteFailure noteFailure)? loadFailure,
+  }) {
+    return loadFailure?.call(noteFailure);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
@@ -901,6 +1073,17 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSucess value)? loadSucess,
+    TResult Function(_LoadFailure value)? loadFailure,
+  }) {
+    return loadFailure?.call(this);
   }
 
   @override

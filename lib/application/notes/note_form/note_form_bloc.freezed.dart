@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'note_form_bloc.dart';
 
@@ -60,6 +61,15 @@ mixin _$NoteFormEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -76,6 +86,15 @@ mixin _$NoteFormEvent {
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_TodosChanged value) todosChanged,
     required TResult Function(_Saved value) saved,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -192,6 +211,18 @@ class _$_Initialized with DiagnosticableTreeMixin implements _Initialized {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) {
+    return initialized?.call(initialNoteOption);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -216,6 +247,18 @@ class _$_Initialized with DiagnosticableTreeMixin implements _Initialized {
     required TResult Function(_Saved value) saved,
   }) {
     return initialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return initialized?.call(this);
   }
 
   @override
@@ -327,6 +370,18 @@ class _$_BodyPressed with DiagnosticableTreeMixin implements _BodyPressed {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) {
+    return bodyPressed?.call(bodyStr);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -351,6 +406,18 @@ class _$_BodyPressed with DiagnosticableTreeMixin implements _BodyPressed {
     required TResult Function(_Saved value) saved,
   }) {
     return bodyPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return bodyPressed?.call(this);
   }
 
   @override
@@ -463,6 +530,18 @@ class _$_ColorChanged with DiagnosticableTreeMixin implements _ColorChanged {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) {
+    return colorChanged?.call(color);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -487,6 +566,18 @@ class _$_ColorChanged with DiagnosticableTreeMixin implements _ColorChanged {
     required TResult Function(_Saved value) saved,
   }) {
     return colorChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return colorChanged?.call(this);
   }
 
   @override
@@ -599,6 +690,18 @@ class _$_TodosChanged with DiagnosticableTreeMixin implements _TodosChanged {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) {
+    return todosChanged?.call(todos);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -623,6 +726,18 @@ class _$_TodosChanged with DiagnosticableTreeMixin implements _TodosChanged {
     required TResult Function(_Saved value) saved,
   }) {
     return todosChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return todosChanged?.call(this);
   }
 
   @override
@@ -706,6 +821,18 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Option<Note> initialNoteOption)? initialized,
+    TResult Function(String bodyStr)? bodyPressed,
+    TResult Function(Color color)? colorChanged,
+    TResult Function(KtList<TodoItemPrimitive> todos)? todosChanged,
+    TResult Function()? saved,
+  }) {
+    return saved?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Note> initialNoteOption)? initialized,
     TResult Function(String bodyStr)? bodyPressed,
@@ -730,6 +857,18 @@ class _$_Saved with DiagnosticableTreeMixin implements _Saved {
     required TResult Function(_Saved value) saved,
   }) {
     return saved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_BodyPressed value)? bodyPressed,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_TodosChanged value)? todosChanged,
+    TResult Function(_Saved value)? saved,
+  }) {
+    return saved?.call(this);
   }
 
   @override

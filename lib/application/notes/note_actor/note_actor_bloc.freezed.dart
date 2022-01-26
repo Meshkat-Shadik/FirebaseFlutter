@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'note_actor_bloc.dart';
 
@@ -36,6 +37,11 @@ mixin _$NoteActorEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Note note)? deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Note note)? deleted,
     required TResult orElse(),
@@ -44,6 +50,11 @@ mixin _$NoteActorEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Deleted value) deleted,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -171,6 +182,14 @@ class _$_Deleted implements _Deleted {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Note note)? deleted,
+  }) {
+    return deleted?.call(note);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Note note)? deleted,
     required TResult orElse(),
@@ -187,6 +206,14 @@ class _$_Deleted implements _Deleted {
     required TResult Function(_Deleted value) deleted,
   }) {
     return deleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Deleted value)? deleted,
+  }) {
+    return deleted?.call(this);
   }
 
   @override
@@ -250,6 +277,14 @@ mixin _$NoteActorState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(NoteFailure noteFailure)? deleteFailure,
+    TResult Function()? deleteSucess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
@@ -264,6 +299,14 @@ mixin _$NoteActorState {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_DeleteFailure value) deleteFailure,
     required TResult Function(_DeleteSucess value) deleteSucess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteFailure value)? deleteFailure,
+    TResult Function(_DeleteSucess value)? deleteSucess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -341,6 +384,17 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(NoteFailure noteFailure)? deleteFailure,
+    TResult Function()? deleteSucess,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
@@ -363,6 +417,17 @@ class _$_Initial implements _Initial {
     required TResult Function(_DeleteSucess value) deleteSucess,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteFailure value)? deleteFailure,
+    TResult Function(_DeleteSucess value)? deleteSucess,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -435,6 +500,17 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(NoteFailure noteFailure)? deleteFailure,
+    TResult Function()? deleteSucess,
+  }) {
+    return actionInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
@@ -457,6 +533,17 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function(_DeleteSucess value) deleteSucess,
   }) {
     return actionInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteFailure value)? deleteFailure,
+    TResult Function(_DeleteSucess value)? deleteSucess,
+  }) {
+    return actionInProgress?.call(this);
   }
 
   @override
@@ -564,6 +651,17 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(NoteFailure noteFailure)? deleteFailure,
+    TResult Function()? deleteSucess,
+  }) {
+    return deleteFailure?.call(noteFailure);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
@@ -586,6 +684,17 @@ class _$_DeleteFailure implements _DeleteFailure {
     required TResult Function(_DeleteSucess value) deleteSucess,
   }) {
     return deleteFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteFailure value)? deleteFailure,
+    TResult Function(_DeleteSucess value)? deleteSucess,
+  }) {
+    return deleteFailure?.call(this);
   }
 
   @override
@@ -663,6 +772,17 @@ class _$_DeleteSucess implements _DeleteSucess {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(NoteFailure noteFailure)? deleteFailure,
+    TResult Function()? deleteSucess,
+  }) {
+    return deleteSucess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
@@ -685,6 +805,17 @@ class _$_DeleteSucess implements _DeleteSucess {
     required TResult Function(_DeleteSucess value) deleteSucess,
   }) {
     return deleteSucess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_DeleteFailure value)? deleteFailure,
+    TResult Function(_DeleteSucess value)? deleteSucess,
+  }) {
+    return deleteSucess?.call(this);
   }
 
   @override
