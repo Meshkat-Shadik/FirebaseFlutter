@@ -13,17 +13,31 @@ part 'note_actor_bloc.freezed.dart';
 
 @injectable
 class NoteActorBloc extends Bloc<NoteActorEvent, NoteActorState> {
-  NoteActorBloc(this._noteRepository) : super(const NoteActorState.initial());
   final INoteRepository _noteRepository;
-  @override
-  Stream<NoteActorState> mapEventToState(
-    NoteActorEvent event,
-  ) async* {
-    yield const NoteActorState.actionInProgress();
+  NoteActorBloc(this._noteRepository) : super(const NoteActorState.initial()) {
+    on<_Deleted>(_noteDeleteMethod);
+  }
+
+  Future<void> _noteDeleteMethod(
+      _Deleted event, Emitter<NoteActorState> state) async {
+    emit(const NoteActorState.actionInProgress());
     final possibleFailure = await _noteRepository.delete(event.note);
-    yield possibleFailure.fold(
+    emit(possibleFailure.fold(
       (l) => NoteActorState.deleteFailure(l),
       (r) => const NoteActorState.deleteSucess(),
-    );
+    ));
   }
 }
+
+//   @override
+//   Stream<NoteActorState> mapEventToState(
+//     NoteActorEvent event,
+//   ) async* {
+//     yield const NoteActorState.actionInProgress();
+//     final possibleFailure = await _noteRepository.delete(event.note);
+//     yield possibleFailure.fold(
+//       (l) => NoteActorState.deleteFailure(l),
+//       (r) => const NoteActorState.deleteSucess(),
+//     );
+//   }
+// }
