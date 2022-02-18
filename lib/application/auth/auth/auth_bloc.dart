@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:firebase_todo/domain/auth/i_auth_facade.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,10 +13,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authFacade) : super(const Initial()) {
     on<AuthCheckRequested>((event, emit) async {
       final userOption = await _authFacade.getSignedInUser();
-      emit(userOption.fold(
-        () => const AuthState.unAuthenticated(),
-        (a) => const AuthState.authenticated(),
-      ));
+      emit(
+        userOption.fold(
+          () => const AuthState.unAuthenticated(),
+          (a) => const AuthState.authenticated(),
+        ),
+      );
     });
 
     on<SignedOut>((event, emit) async {

@@ -18,35 +18,43 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
     on<EmailChanged>((event, emit) async {
-      emit(state.copyWith(
-        emailAddress: EmailAddress(email: event.email),
-        authFailureOrSuccessOption: none(), //resetting the previous response
-      ));
+      emit(
+        state.copyWith(
+          emailAddress: EmailAddress(email: event.email),
+          authFailureOrSuccessOption: none(), //resetting the previous response
+        ),
+      );
     });
     on<PasswrodChanged>((event, emit) async {
-      emit(state.copyWith(
-        password: Password(password: event.password),
-        authFailureOrSuccessOption: none(), //resetting the previous response
-      ));
+      emit(
+        state.copyWith(
+          password: Password(password: event.password),
+          authFailureOrSuccessOption: none(), //resetting the previous response
+        ),
+      );
     });
 
     on<RegisterWithEmailAndPasswordPressed>(_registerWithEmailAndPassword);
     on<SignInWithEmailAndPasswordPressed>(_loginWithEmailAndPassword);
 
     on<SignInWithGooglePressed>((event, emit) async {
-      emit(state.copyWith(
-        isSubmitting: true,
-        authFailureOrSuccessOption: none(), //resetting the previous response
-      ));
+      emit(
+        state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(), //resetting the previous response
+        ),
+      );
       final failureOrSuccess = await _authFacade.signInWithGoogle();
-      emit(state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption:
-            some(failureOrSuccess), //adding the response
-      ));
+      emit(
+        state.copyWith(
+          isSubmitting: false,
+          authFailureOrSuccessOption:
+              some(failureOrSuccess), //adding the response
+        ),
+      );
     });
   }
-  Future<void> _registerWithEmailAndPassword(
+  FutureOr<void> _registerWithEmailAndPassword(
     RegisterWithEmailAndPasswordPressed event,
     Emitter<SignInFormState> emit,
   ) async {
@@ -56,10 +64,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
-      emit(state.copyWith(
-        isSubmitting: true,
-        authFailureOrSuccessOption: none(),
-      ));
+      emit(
+        state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        ),
+      );
       failureOrSucces = await _authFacade.registerWithEmailAndPassword(
         emailAddress: state.emailAddress,
         password: state.password,
@@ -67,15 +77,18 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     } else {
       //  failureOrSucces = none();
     }
-    emit(state.copyWith(
-      isSubmitting: false,
-      showErrorMessages: AutovalidateMode.always,
-      authFailureOrSuccessOption: optionOf(failureOrSucces), //if null then none
-      //if some then some (handy use of ternary));
-    ));
+    emit(
+      state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: AutovalidateMode.always,
+        authFailureOrSuccessOption:
+            optionOf(failureOrSucces), //if null then none
+        //if some then some (handy use of ternary));
+      ),
+    );
   }
 
-  Future<void> _loginWithEmailAndPassword(
+  FutureOr<void> _loginWithEmailAndPassword(
     SignInWithEmailAndPasswordPressed event,
     Emitter<SignInFormState> emit,
   ) async {
@@ -85,10 +98,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
-      emit(state.copyWith(
-        isSubmitting: true,
-        authFailureOrSuccessOption: none(),
-      ));
+      emit(
+        state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: none(),
+        ),
+      );
       failureOrSucces = await _authFacade.signInWithEmailAndPassword(
         emailAddress: state.emailAddress,
         password: state.password,
@@ -96,14 +111,60 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     } else {
       //  failureOrSucces = none();
     }
-    emit(state.copyWith(
-      isSubmitting: false,
-      showErrorMessages: AutovalidateMode.always,
-      authFailureOrSuccessOption: optionOf(failureOrSucces), //if null then none
-      //if some then some (handy use of ternary));
-    ));
+    emit(
+      state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: AutovalidateMode.always,
+        authFailureOrSuccessOption:
+            optionOf(failureOrSucces), //if null then none
+        //if some then some (handy use of ternary));
+      ),
+    );
   }
-}
+
+//   FutureOr<void> _processRegAndSignIn(
+//       SignInFormEvent event, Emitter<SignInFormState> emit
+//       // Future<Either<AuthFailure, Unit>> Function({
+//       //   required EmailAddress emailAddress,
+//       //   required Password password,
+//       // })
+//       //  forwardedCall,
+//       ) async {
+//     Either<AuthFailure, Unit>? failureOrSucces;
+
+//     final isEmailValid = state.emailAddress.isValid();
+//     final isPasswordValid = state.password.isValid();
+
+//     if (isEmailValid && isPasswordValid) {
+//       emit(state.copyWith(
+//         isSubmitting: true,
+//         authFailureOrSuccessOption: none(),
+//       ));
+
+//       if(event is SignInWithEmailAndPasswordPressed)
+//       {
+//         failureOrSucces = await _authFacade.signInWithEmailAndPassword(emailAddress: state.emailAddress, password: state.password);
+//       }
+//       else if (event is RegisterWithEmailAndPasswordPressed)
+//       {
+//         failureOrSucces = await _authFacade.registerWithEmailAndPassword(emailAddress: state.emailAddress, password: state.password);
+//       }
+//       // failureOrSucces = await forwardedCall(
+//       //   emailAddress: state.emailAddress,
+//       //   password: state.password,
+//       // );
+//     }
+//     // } else {
+//     //   //  failureOrSucces = none();
+//     // }
+//     emit(state.copyWith(
+//       isSubmitting: false,
+//       showErrorMessages: AutovalidateMode.always,
+//       authFailureOrSuccessOption: optionOf(failureOrSucces), //if null then none
+//       //if some then some (handy use of ternary));
+//     ));
+//   }
+// }
 
   // @override
   // Stream<SignInFormState> mapEventToState(
@@ -177,3 +238,5 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 //     );
 //   }
 // }
+
+}

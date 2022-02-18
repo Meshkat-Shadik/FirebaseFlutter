@@ -19,13 +19,17 @@ class NoteActorBloc extends Bloc<NoteActorEvent, NoteActorState> {
   }
 
   Future<void> _noteDeleteMethod(
-      _Deleted event, Emitter<NoteActorState> state) async {
+    _Deleted event,
+    Emitter<NoteActorState> emit,
+  ) async {
     emit(const NoteActorState.actionInProgress());
     final possibleFailure = await _noteRepository.delete(event.note);
-    emit(possibleFailure.fold(
-      (l) => NoteActorState.deleteFailure(l),
-      (r) => const NoteActorState.deleteSucess(),
-    ));
+    emit(
+      possibleFailure.fold(
+        (l) => NoteActorState.deleteFailure(l),
+        (r) => const NoteActorState.deleteSucess(),
+      ),
+    );
   }
 }
 

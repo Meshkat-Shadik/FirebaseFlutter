@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/notes/i_note_repository.dart';
@@ -30,36 +28,50 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   }
 
   Future<void> _initializedMethod(
-      _Initialized event, Emitter<NoteFormState> emit) async {
-    emit(event.initialNoteOption.fold(
-      () => state, //no change
-      (initialNote) => state.copyWith(
-        note: initialNote,
-        isEditing: true,
+    _Initialized event,
+    Emitter<NoteFormState> emit,
+  ) async {
+    emit(
+      event.initialNoteOption.fold(
+        () => state, //no change
+        (initialNote) => state.copyWith(
+          note: initialNote,
+          isEditing: true,
+        ),
       ),
-    ));
+    );
   }
 
   Future<void> _bodyPressedMethod(
-      _BodyPressed event, Emitter<NoteFormState> emit) async {
-    emit(state.copyWith(
-      note: state.note.copyWith(
-        body: NoteBody(event.bodyStr),
+    _BodyPressed event,
+    Emitter<NoteFormState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        note: state.note.copyWith(
+          body: NoteBody(event.bodyStr),
+        ),
+        saveFailureOrSuccessOption: none(),
       ),
-      saveFailureOrSuccessOption: none(),
-    ));
+    );
   }
 
   Future<void> _colorChangedMethod(
-      _ColorChanged event, Emitter<NoteFormState> emit) async {
-    emit(state.copyWith(
-      note: state.note.copyWith(color: NoteColor(event.color)),
-      saveFailureOrSuccessOption: none(),
-    ));
+    _ColorChanged event,
+    Emitter<NoteFormState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        note: state.note.copyWith(color: NoteColor(event.color)),
+        saveFailureOrSuccessOption: none(),
+      ),
+    );
   }
 
   Future<void> _todoChangedMethod(
-      _TodosChanged event, Emitter<NoteFormState> emit) async {
+    _TodosChanged event,
+    Emitter<NoteFormState> emit,
+  ) async {
     emit(
       state.copyWith(
         note: state.note.copyWith(
@@ -74,10 +86,12 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   Future<void> _savedMethod(_Saved event, Emitter<NoteFormState> emit) async {
     Either<NoteFailure, Unit>? failureOrSuccess;
 
-    emit(state.copyWith(
-      isSaving: true,
-      saveFailureOrSuccessOption: none(),
-    ));
+    emit(
+      state.copyWith(
+        isSaving: true,
+        saveFailureOrSuccessOption: none(),
+      ),
+    );
 
     if (state.note.failureOption.isNone()) {
       failureOrSuccess = state.isEditing

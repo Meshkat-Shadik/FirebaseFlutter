@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/core/core.dart';
-import 'package:firebase_todo/domain/core/value_objects.dart';
 import 'package:uuid/uuid.dart';
 
 class EmailAddress extends ValueObject<String> {

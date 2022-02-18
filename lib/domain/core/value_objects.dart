@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/domain/core/core.dart';
-import 'package:firebase_todo/domain/core/errors.dart';
 import 'package:flutter/foundation.dart';
 
 @immutable
@@ -12,15 +11,16 @@ abstract class ValueObject<T> {
 
   T getOrCrash() {
     return value.fold(
-        (l) => throw UnexpectedValueError(l), id //shorthand of (r) => r
-        );
+      (l) => throw UnexpectedValueError(l),
+      id,
+    ); //shorthand of (r) => r
   }
 
   //only extracts the failure
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
     return value.fold(
-      (l) => Left(l),
-      (r) => const Right(unit),
+      left,
+      (r) => right(unit),
     );
   }
 

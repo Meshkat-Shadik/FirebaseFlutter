@@ -5,7 +5,6 @@ import 'package:firebase_todo/domain/auth/value_objects.dart';
 import 'package:firebase_todo/domain/notes/note.dart';
 import 'package:firebase_todo/domain/notes/todo_item.dart';
 import 'package:firebase_todo/domain/notes/value_objectes.dart';
-import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/kt.dart';
 
@@ -24,6 +23,7 @@ String noteDtoToJson(NoteDto data) => json.encode(data.toJson());
 @freezed
 abstract class NoteDto implements _$NoteDto {
   const factory NoteDto({
+    // ignore: invalid_annotation_target
     @JsonKey(ignore: true) String? id,
     @required String? body,
     @required int? color,
@@ -88,9 +88,10 @@ abstract class TodoItemDto implements _$TodoItemDto {
 
   factory TodoItemDto.fromDomain(TodoItem todoItem) {
     return TodoItemDto(
-        id: todoItem.id.getOrCrash(),
-        name: todoItem.name.getOrCrash(),
-        done: todoItem.done);
+      id: todoItem.id.getOrCrash(),
+      name: todoItem.name.getOrCrash(),
+      done: todoItem.done,
+    );
   }
 
   const TodoItemDto._();

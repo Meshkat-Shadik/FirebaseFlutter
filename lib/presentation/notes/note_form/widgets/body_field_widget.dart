@@ -21,40 +21,41 @@ class BodyField extends HookWidget {
         return Padding(
           padding: const EdgeInsets.all(8),
           child: TextFormField(
-              decoration: InputDecoration(
-                fillColor: BlocProvider.of<NoteFormBloc>(context)
-                    .state
-                    .note
-                    .color
-                    .value
-                    .fold(
-                      (_) {},
-                      (color) => color,
-                    ),
-                filled: true,
-                labelText: 'Note',
-                counterText: '',
-              ),
-              controller: _textEditingController,
-              maxLength: NoteBody.maxLength,
-              maxLines: null,
-              minLines: 5,
-              onChanged: (value) => BlocProvider.of<NoteFormBloc>(context).add(
-                    NoteFormEvent.bodyPressed(value),
-                  ),
-              validator: (_) => BlocProvider.of<NoteFormBloc>(context)
+            decoration: InputDecoration(
+              fillColor: BlocProvider.of<NoteFormBloc>(context)
                   .state
                   .note
-                  .body
+                  .color
                   .value
                   .fold(
-                    (f) => f.maybeMap(
-                      empty: (f) => 'Can not be empty',
-                      exceedingLength: (f) => 'Exceeding length, max ${f.max}',
-                      orElse: () {},
-                    ),
-                    (r) {},
-                  )),
+                    (_) {},
+                    (color) => color,
+                  ),
+              filled: true,
+              labelText: 'Note',
+              counterText: '',
+            ),
+            controller: _textEditingController,
+            maxLength: NoteBody.maxLength,
+            maxLines: null,
+            minLines: 5,
+            onChanged: (value) => BlocProvider.of<NoteFormBloc>(context).add(
+              NoteFormEvent.bodyPressed(value),
+            ),
+            validator: (_) => BlocProvider.of<NoteFormBloc>(context)
+                .state
+                .note
+                .body
+                .value
+                .fold(
+                  (f) => f.maybeMap(
+                    empty: (f) => 'Can not be empty',
+                    exceedingLength: (f) => 'Exceeding length, max ${f.max}',
+                    orElse: () {},
+                  ),
+                  (r) {},
+                ),
+          ),
         );
       },
     );

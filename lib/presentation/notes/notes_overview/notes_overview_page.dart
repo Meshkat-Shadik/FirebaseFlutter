@@ -1,14 +1,14 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
 import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:firebase_todo/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/uncompleted_switch_button.dart';
+import 'package:firebase_todo/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:firebase_todo/presentation/routes/router.gr.dart';
 
 class NotesOverviewPage extends StatelessWidget {
   const NotesOverviewPage({Key? key}) : super(key: key);
@@ -41,15 +41,15 @@ class NotesOverviewPage extends StatelessWidget {
               state.maybeMap(
                 deleteFailure: (state) {
                   FlushbarHelper.createError(
-                          message: state.noteFailure.map(
-                            unexpected: (_) =>
-                                'Unexpected Error occured while deleting!',
-                            insufficientPermission: (_) =>
-                                'Insufficient Permission ❌',
-                            unableToUpdate: (_) => 'Impossible error',
-                          ),
-                          duration: const Duration(seconds: 5))
-                      .show(context);
+                    message: state.noteFailure.map(
+                      unexpected: (_) =>
+                          'Unexpected Error occured while deleting!',
+                      insufficientPermission: (_) =>
+                          'Insufficient Permission ❌',
+                      unableToUpdate: (_) => 'Impossible error',
+                    ),
+                    duration: const Duration(seconds: 5),
+                  ).show(context);
                 },
                 orElse: () {},
               );

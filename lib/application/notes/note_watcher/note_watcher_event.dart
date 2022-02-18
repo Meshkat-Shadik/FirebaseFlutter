@@ -6,6 +6,6 @@ class NoteWatcherEvent with _$NoteWatcherEvent {
   const factory NoteWatcherEvent.watchUncompletedstarted() =
       _WatchUncompletedstarted;
   const factory NoteWatcherEvent.noteReceived(
-      Either<NoteFailure, KtList<Note>> failureOrNotes) = _NoteReceived;
+    Either<NoteFailure, KtList<Note>> failureOrNotes,
+  ) = _NoteReceived;
 }
-

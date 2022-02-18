@@ -1,7 +1,6 @@
 import 'package:firebase_todo/application/notes/note_form/note_form_bloc.dart';
 import 'package:firebase_todo/domain/notes/value_objectes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ColorField extends StatelessWidget {
@@ -30,14 +29,15 @@ class ColorField extends StatelessWidget {
                   height: 60,
                 ),
                 shape: CircleBorder(
-                    side: state.note.color.value.fold(
-                  (l) => BorderSide.none,
-                  (color) => color == itemColor
-                      ? const BorderSide(width: 1.5)
-                      : BorderSide.none,
-                )
-                    //  BorderSide(color: Colors.black, width: 1.5),
-                    ),
+                  side: state.note.color.value.fold(
+                    (l) => BorderSide.none,
+                    (color) => color == itemColor
+                        ? const BorderSide(width: 1.5)
+                        : BorderSide.none,
+                  )
+                  //  BorderSide(color: Colors.black, width: 1.5),
+                  ,
+                ),
                 fillColor: itemColor,
               );
             },

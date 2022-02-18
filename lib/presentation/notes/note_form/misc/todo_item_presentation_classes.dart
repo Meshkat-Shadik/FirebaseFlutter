@@ -26,7 +26,10 @@ abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
       );
   factory TodoItemPrimitive.fromDomain(TodoItem todoItem) {
     return TodoItemPrimitive(
-        id: todoItem.id, name: todoItem.name.getOrCrash(), done: todoItem.done);
+      id: todoItem.id,
+      name: todoItem.name.getOrCrash(),
+      done: todoItem.done,
+    );
   }
   TodoItem toDomain() {
     return TodoItem(

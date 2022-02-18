@@ -1,11 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:firebase_todo/domain/notes/note.dart';
 import 'package:firebase_todo/domain/notes/todo_item.dart';
+import 'package:firebase_todo/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';
-import 'package:firebase_todo/presentation/routes/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({
@@ -99,7 +99,7 @@ class TodoDisplay extends StatelessWidget {
         if (todo.done)
           Icon(
             Icons.check_box,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         if (!todo.done)
           Icon(

@@ -66,9 +66,11 @@ Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
   if (input!.size <= maxLength!) {
     return right(input);
   } else {
-    return left(ValueFailure.listTooLong(
-      failedValue: input,
-      max: maxLength,
-    ));
+    return left(
+      ValueFailure.listTooLong(
+        failedValue: input,
+        max: maxLength,
+      ),
+    );
   }
 }
