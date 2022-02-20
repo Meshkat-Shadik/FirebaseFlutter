@@ -20,18 +20,28 @@ class AppWidget extends StatelessWidget {
         routeInformationParser: _appRouter.defaultRouteParser(),
         debugShowCheckedModeBanner: false,
         title: 'Notes',
-        theme: ThemeData.light().copyWith(
-          primaryColor: Colors.green[800],
-          floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Colors.blue[900],
-          ),
+        // theme: ThemeData.light().copyWith(
+        //   primaryColor: Colors.green[800],
+        //   floatingActionButtonTheme: FloatingActionButtonThemeData(
+        //     backgroundColor: Colors.blue[900],
+        //   ),
+        // inputDecorationTheme: InputDecorationTheme(
+        //   border: OutlineInputBorder(
+        //     borderRadius: BorderRadius.circular(8),
+        //   ),
+        // ),
+        //   colorScheme:
+        //       ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent),
+        // ),
+        theme: ThemeData(
+          colorSchemeSeed: Colors.green.shade800,
+          brightness: Brightness.light,
+          useMaterial3: true,
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          colorScheme:
-              ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent),
         ),
       ),
     );

@@ -28,9 +28,11 @@ class BodyField extends HookWidget {
                   .color
                   .value
                   .fold(
-                    (_) {},
-                    (color) => color,
-                  ),
+                (_) {
+                  return null;
+                },
+                (color) => color,
+              ),
               filled: true,
               labelText: 'Note',
               counterText: '',
@@ -48,13 +50,17 @@ class BodyField extends HookWidget {
                 .body
                 .value
                 .fold(
-                  (f) => f.maybeMap(
-                    empty: (f) => 'Can not be empty',
-                    exceedingLength: (f) => 'Exceeding length, max ${f.max}',
-                    orElse: () {},
-                  ),
-                  (r) {},
-                ),
+              (f) => f.maybeMap(
+                empty: (f) => 'Can not be empty',
+                exceedingLength: (f) => 'Exceeding length, max ${f.max}',
+                orElse: () {
+                  return null;
+                },
+              ),
+              (r) {
+                return null;
+              },
+            ),
           ),
         );
       },

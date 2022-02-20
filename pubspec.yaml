@@ -44,6 +44,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
   flutter_slidable: ^1.2.0
+  implicitly_animated_reorderable_list: ^0.4.2
+  hydrated_bloc: any
 
 dev_dependencies:
   flutter_test:
