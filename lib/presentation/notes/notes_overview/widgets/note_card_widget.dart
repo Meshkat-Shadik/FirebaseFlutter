@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart';
+import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/domain/notes/note.dart';
 import 'package:firebase_todo/domain/notes/todo_item.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
@@ -33,7 +34,10 @@ class NoteCard extends StatelessWidget {
             children: [
               Text(
                 note.body.getOrCrash(),
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
               ),
               if (note.todos.length > 0) ...[
                 const SizedBox(height: 4),
@@ -97,16 +101,21 @@ class TodoDisplay extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (todo.done)
-          Icon(
+          const Icon(
             Icons.check_box,
-            color: Theme.of(context).colorScheme.secondary,
+            color: Colors.grey,
           ),
         if (!todo.done)
-          Icon(
+          const Icon(
             Icons.check_box_outline_blank,
-            color: Theme.of(context).disabledColor,
+            color: Colors.grey,
           ),
-        Text(todo.name.getOrCrash()),
+        Text(
+          todo.name.getOrCrash(),
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

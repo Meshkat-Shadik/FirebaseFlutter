@@ -1,4 +1,5 @@
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
+import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
 import 'package:flutter/material.dart';
@@ -14,35 +15,29 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
-      ],
-      child: MaterialApp.router(
-        routerDelegate: _appRouter.delegate(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        debugShowCheckedModeBanner: false,
-        title: 'Notes',
-        // theme: ThemeData.light().copyWith(
-        //   primaryColor: Colors.green[800],
-        //   floatingActionButtonTheme: FloatingActionButtonThemeData(
-        //     backgroundColor: Colors.blue[900],
-        //   ),
-        // inputDecorationTheme: InputDecorationTheme(
-        //   border: OutlineInputBorder(
-        //     borderRadius: BorderRadius.circular(8),
-        //   ),
-        // ),
-        //   colorScheme:
-        //       ColorScheme.fromSwatch().copyWith(secondary: Colors.blueAccent),
-        // ),
-        theme: ThemeData(
-          colorSchemeSeed: Colors.green.shade800,
-          brightness: Brightness.light,
-          useMaterial3: true,
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
+        BlocProvider<ThemeCubitCubit>(
+          create: (context) => getIt<ThemeCubitCubit>(),
         ),
+      ],
+      child: BlocBuilder<ThemeCubitCubit, bool>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            debugShowCheckedModeBanner: false,
+            title: 'Notes',
+            theme: ThemeData(
+              colorSchemeSeed: Colors.green.shade800,
+              brightness: state ? Brightness.light : Brightness.dark,
+              useMaterial3: true,
+              inputDecorationTheme: InputDecorationTheme(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
 import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:firebase_todo/application/notes/note_watcher/note_watcher_bloc.dart';
+import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/uncompleted_switch_button.dart';
@@ -68,6 +69,20 @@ class NotesOverviewPage extends StatelessWidget {
             ),
             actions: [
               UncompletedSwitch(),
+              BlocBuilder<ThemeCubitCubit, bool>(
+                builder: (context, state) {
+                  return IconButton(
+                    onPressed: () {
+                      BlocProvider.of<ThemeCubitCubit>(context).toggleTheme(
+                        value: !state,
+                      );
+                    },
+                    icon: Icon(
+                      state ? Icons.nightlight_outlined : Icons.brightness_7,
+                    ),
+                  );
+                },
+              )
             ],
           ),
           body: const NotesOverviewBody(),

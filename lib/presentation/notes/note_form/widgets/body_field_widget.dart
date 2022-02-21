@@ -18,21 +18,23 @@ class BodyField extends HookWidget {
       buildWhen: (p, c) =>
           p.isEditing != c.isEditing || p.note.color != c.note.color,
       builder: (context, state) {
+        final color =
+            BlocProvider.of<NoteFormBloc>(context).state.note.color.value.fold(
+          (_) {
+            return null;
+          },
+          (color) => color,
+        );
+
         return Padding(
           padding: const EdgeInsets.all(8),
           child: TextFormField(
+            style: TextStyle(
+              color:
+                  color!.computeLuminance() > 0.5 ? Colors.black : Colors.white,
+            ),
             decoration: InputDecoration(
-              fillColor: BlocProvider.of<NoteFormBloc>(context)
-                  .state
-                  .note
-                  .color
-                  .value
-                  .fold(
-                (_) {
-                  return null;
-                },
-                (color) => color,
-              ),
+              fillColor: color,
               filled: true,
               labelText: 'Note',
               counterText: '',

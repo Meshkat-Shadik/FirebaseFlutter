@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_todo/application/notes/note_form/note_form_bloc.dart';
+import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/domain/notes/note.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
@@ -133,6 +134,20 @@ class NoteFormPageScaffold extends StatelessWidget {
                   .add(const NoteFormEvent.saved());
             },
             icon: const Icon(Icons.check),
+          ),
+          BlocBuilder<ThemeCubitCubit, bool>(
+            builder: (context, state) {
+              return IconButton(
+                onPressed: () {
+                  BlocProvider.of<ThemeCubitCubit>(context).toggleTheme(
+                    value: !state,
+                  );
+                },
+                icon: Icon(
+                  state ? Icons.nightlight_outlined : Icons.brightness_7,
+                ),
+              );
+            },
           ),
         ],
       ),

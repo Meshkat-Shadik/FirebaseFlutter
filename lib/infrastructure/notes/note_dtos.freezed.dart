@@ -46,6 +46,7 @@ const $NoteDto = _$NoteDtoTearOff();
 
 /// @nodoc
 mixin _$NoteDto {
+// ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String? get body => throw _privateConstructorUsedError;
@@ -181,7 +182,7 @@ class _$_NoteDto extends _NoteDto {
   factory _$_NoteDto.fromJson(Map<String, dynamic> json) =>
       _$$_NoteDtoFromJson(json);
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   final String? id;
   @override
@@ -248,7 +249,7 @@ abstract class _NoteDto extends NoteDto {
 
   factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   @override
