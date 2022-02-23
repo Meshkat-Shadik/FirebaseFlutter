@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/core/app_widget.dart';
@@ -15,7 +16,9 @@ void main() async {
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
   HydratedBlocOverrides.runZoned(
-    () => runApp(AppWidget()),
+    () => runApp(
+      AppWidget(),
+    ),
     storage: storage,
   );
 }

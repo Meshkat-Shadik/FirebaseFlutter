@@ -1,10 +1,12 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
+import 'package:firebase_todo/application/cubit/connectivity_cubit.dart';
 import 'package:firebase_todo/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:firebase_todo/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/injection.dart';
+import 'package:firebase_todo/presentation/core/internet_disable.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/notes_overview_body.dart';
 import 'package:firebase_todo/presentation/notes/notes_overview/widgets/uncompleted_switch_button.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
@@ -57,43 +59,59 @@ class NotesOverviewPage extends StatelessWidget {
             },
           ),
         ],
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Notes'),
-            leading: IconButton(
-              onPressed: () {
-                BlocProvider.of<AuthBloc>(context)
-                    .add(const AuthEvent.signedOut());
-              },
-              icon: const Icon(Icons.exit_to_app),
-            ),
-            actions: [
-              UncompletedSwitch(),
-              BlocBuilder<ThemeCubitCubit, bool>(
-                builder: (context, state) {
-                  return IconButton(
-                    onPressed: () {
-                      BlocProvider.of<ThemeCubitCubit>(context).toggleTheme(
-                        value: !state,
-                      );
-                    },
-                    icon: Icon(
-                      state ? Icons.nightlight_outlined : Icons.brightness_7,
+        child: BlocBuilder<ConnectivityCubit, bool>(
+          builder: (context, state) {
+            return state
+                ? Scaffold(
+                    appBar: AppBar(
+                      title: const Text('Notes'),
+                      leading: IconButton(
+                        onPressed: () {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(const AuthEvent.signedOut());
+                        },
+                        icon: const Icon(Icons.exit_to_app),
+                      ),
+                      actions: [
+                        UncompletedSwitch(),
+                        BlocBuilder<ThemeCubitCubit, bool>(
+                          builder: (context, state) {
+                            return IconButton(
+                              onPressed: () {
+                                BlocProvider.of<ThemeCubitCubit>(context)
+                                    .toggleTheme(
+                                  value: !state,
+                                );
+                              },
+                              icon: Icon(
+                                state
+                                    ? Icons.nightlight_outlined
+                                    : Icons.brightness_7,
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                    body: const NotesOverviewBody(),
+                    floatingActionButton: FloatingActionButton(
+                      onPressed: () {
+                        context.router
+                            .push(NoteFormPageRoute(editedNote: null));
+                      },
+                      child: const Icon(Icons.add),
+                    ),
+                  )
+                : const Scaffold(
+                    body: Center(
+                      child: InternetDisable(),
                     ),
                   );
-                },
-              )
-            ],
-          ),
-          body: const NotesOverviewBody(),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              context.router.push(NoteFormPageRoute(editedNote: null));
-            },
-            child: const Icon(Icons.add),
-          ),
+          },
         ),
       ),
     );
   }
 }
+
+

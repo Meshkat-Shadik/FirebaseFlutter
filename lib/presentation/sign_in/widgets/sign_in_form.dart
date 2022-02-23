@@ -2,7 +2,9 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
 import 'package:firebase_todo/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:firebase_todo/application/cubit/connectivity_cubit.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
+import 'package:firebase_todo/presentation/splash/connection_checker_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,105 +46,120 @@ class SignInForm extends HookWidget {
         );
       },
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(8),
-          child: Form(
-            autovalidateMode: state.showErrorMessages,
-            child: ListView(
-              children: [
-                const Text(
-                  '📝',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 130),
-                ),
-                const SizedBox(height: 8),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                  ),
-                  autocorrect: false,
-                  onChanged: (value) => BlocProvider.of<SignInFormBloc>(context)
-                      .add(SignInFormEvent.emailChanged(value)),
-                  validator: (_) => context
-                      .read<SignInFormBloc>()
-                      .state
-                      .emailAddress
-                      .value
-                      .fold(
-                        (l) => l.maybeMap(
-                          orElse: () => null,
-                          invalidEmail: (_) => 'Invalid Email',
-                        ),
-                        (_) => null,
-                      ),
-                ),
-                const SizedBox(height: 8),
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock),
-                    labelText: 'Password',
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        toogleShowPassword.value = !toogleShowPassword.value;
-                      },
-                      icon: toogleShowPassword.value == true
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility),
-                    ),
-                  ),
-                  obscureText: !(!!toogleShowPassword.value),
-                  autocorrect: false,
-                  onChanged: (value) => BlocProvider.of<SignInFormBloc>(context)
-                      .add(SignInFormEvent.passwordChanged(value)),
-                  validator: (_) =>
-                      context.read<SignInFormBloc>().state.password.value.fold(
-                            (l) => l.maybeMap(
-                              orElse: () => null,
-                              shortPassword: (_) => 'Short Password',
-                            ),
-                            (_) => null,
+        return BlocBuilder<ConnectivityCubit, bool>(
+          builder: (context, state1) {
+            // print(state1);
+            return state1
+                ? Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Form(
+                      autovalidateMode: state.showErrorMessages,
+                      child: ListView(
+                        children: [
+                          const Text(
+                            '📝',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 130),
                           ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent
-                                  .signInWithEmailAndPasswordPressed(),
-                            );
-                      },
-                      child: const Text('SIGN IN'),
+                          const SizedBox(height: 8),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              prefixIcon: Icon(Icons.email),
+                              labelText: 'Email',
+                            ),
+                            autocorrect: false,
+                            onChanged: (value) =>
+                                BlocProvider.of<SignInFormBloc>(context)
+                                    .add(SignInFormEvent.emailChanged(value)),
+                            validator: (_) => context
+                                .read<SignInFormBloc>()
+                                .state
+                                .emailAddress
+                                .value
+                                .fold(
+                                  (l) => l.maybeMap(
+                                    orElse: () => null,
+                                    invalidEmail: (_) => 'Invalid Email',
+                                  ),
+                                  (_) => null,
+                                ),
+                          ),
+                          const SizedBox(height: 8),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(Icons.lock),
+                              labelText: 'Password',
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  toogleShowPassword.value =
+                                      !toogleShowPassword.value;
+                                },
+                                icon: toogleShowPassword.value == true
+                                    ? const Icon(Icons.visibility_off)
+                                    : const Icon(Icons.visibility),
+                              ),
+                            ),
+                            obscureText: !(!!toogleShowPassword.value),
+                            autocorrect: false,
+                            onChanged: (value) =>
+                                BlocProvider.of<SignInFormBloc>(context).add(
+                                    SignInFormEvent.passwordChanged(value)),
+                            validator: (_) => context
+                                .read<SignInFormBloc>()
+                                .state
+                                .password
+                                .value
+                                .fold(
+                                  (l) => l.maybeMap(
+                                    orElse: () => null,
+                                    shortPassword: (_) => 'Short Password',
+                                  ),
+                                  (_) => null,
+                                ),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  context.read<SignInFormBloc>().add(
+                                        const SignInFormEvent
+                                            .signInWithEmailAndPasswordPressed(),
+                                      );
+                                },
+                                child: const Text('SIGN IN'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  context.read<SignInFormBloc>().add(
+                                        const SignInFormEvent
+                                            .registerWithEmailAndPasswordPressed(),
+                                      );
+                                },
+                                child: const Text('REGISTER'),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              context.read<SignInFormBloc>().add(
+                                    const SignInFormEvent
+                                        .signInWithGooglePressed(),
+                                  );
+                            },
+                            child: const Text('SIGN IN WITH GOOGLE'),
+                          ),
+                          if (state.isSubmitting) ...[
+                            const SizedBox(height: 8),
+                            const CupertinoActivityIndicator(),
+                          ],
+                        ],
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent
-                                  .registerWithEmailAndPasswordPressed(),
-                            );
-                      },
-                      child: const Text('REGISTER'),
-                    ),
-                  ],
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<SignInFormBloc>().add(
-                          const SignInFormEvent.signInWithGooglePressed(),
-                        );
-                  },
-                  child: const Text('SIGN IN WITH GOOGLE'),
-                ),
-                if (state.isSubmitting) ...[
-                  const SizedBox(height: 8),
-                  const CupertinoActivityIndicator(),
-                ],
-              ],
-            ),
-          ),
+                  )
+                : const Text('Internet Naai');
+          },
         );
       },
     );

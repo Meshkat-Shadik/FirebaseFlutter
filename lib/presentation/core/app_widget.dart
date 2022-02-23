@@ -1,4 +1,6 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
+import 'package:firebase_todo/application/cubit/connectivity_cubit.dart';
 import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/injection.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppWidget extends StatelessWidget {
   final _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -17,6 +20,9 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider<ThemeCubitCubit>(
           create: (context) => getIt<ThemeCubitCubit>(),
+        ),
+        BlocProvider<ConnectivityCubit>(
+          create: (_) => getIt<ConnectivityCubit>(),
         ),
       ],
       child: BlocBuilder<ThemeCubitCubit, bool>(

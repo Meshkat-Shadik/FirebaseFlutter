@@ -1,10 +1,12 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_todo/application/cubit/connectivity_cubit.dart';
 import 'package:firebase_todo/application/notes/note_form/note_form_bloc.dart';
 import 'package:firebase_todo/application/theme_cubit/theme_cubit_cubit.dart';
 import 'package:firebase_todo/domain/notes/note.dart';
 import 'package:firebase_todo/injection.dart';
+import 'package:firebase_todo/presentation/core/internet_disable.dart';
 import 'package:firebase_todo/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
 import 'package:firebase_todo/presentation/notes/note_form/widgets/add_todo_tile.dart';
 import 'package:firebase_todo/presentation/notes/note_form/widgets/body_field_widget.dart';
@@ -119,59 +121,74 @@ class NoteFormPageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: BlocBuilder<NoteFormBloc, NoteFormState>(
-          buildWhen: (p, c) => p.isEditing != c.isEditing,
-          builder: (context, state) {
-            return Text(state.isEditing ? 'Edit a note' : 'Create a note');
-          },
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              BlocProvider.of<NoteFormBloc>(context)
-                  .add(const NoteFormEvent.saved());
-            },
-            icon: const Icon(Icons.check),
-          ),
-          BlocBuilder<ThemeCubitCubit, bool>(
-            builder: (context, state) {
-              return IconButton(
-                onPressed: () {
-                  BlocProvider.of<ThemeCubitCubit>(context).toggleTheme(
-                    value: !state,
-                  );
-                },
-                icon: Icon(
-                  state ? Icons.nightlight_outlined : Icons.brightness_7,
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-      body: BlocBuilder<NoteFormBloc, NoteFormState>(
-        buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
-        builder: (context, state) {
-          return ChangeNotifierProvider(
-            create: (_) => FormTodos(),
-            child: Form(
-              autovalidateMode: state.showErrorMessages,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: const [
-                    BodyField(),
-                    ColorField(),
-                    TodoList(),
-                    AddTodoTile(),
+    return BlocBuilder<ConnectivityCubit, bool>(
+      builder: (context, connectionState) {
+        return connectionState
+            ? Scaffold(
+                appBar: AppBar(
+                  title: BlocBuilder<NoteFormBloc, NoteFormState>(
+                    buildWhen: (p, c) => p.isEditing != c.isEditing,
+                    builder: (context, state) {
+                      return Text(
+                          state.isEditing ? 'Edit a note' : 'Create a note');
+                    },
+                  ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        BlocProvider.of<NoteFormBloc>(context)
+                            .add(const NoteFormEvent.saved());
+                      },
+                      icon: const Icon(Icons.check),
+                    ),
+                    BlocBuilder<ThemeCubitCubit, bool>(
+                      builder: (context, state) {
+                        return IconButton(
+                          onPressed: () {
+                            BlocProvider.of<ThemeCubitCubit>(context)
+                                .toggleTheme(
+                              value: !state,
+                            );
+                          },
+                          icon: Icon(
+                            state
+                                ? Icons.nightlight_outlined
+                                : Icons.brightness_7,
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
-              ),
-            ),
-          );
-        },
-      ),
+                body: BlocBuilder<NoteFormBloc, NoteFormState>(
+                  buildWhen: (p, c) =>
+                      p.showErrorMessages != c.showErrorMessages,
+                  builder: (context, state) {
+                    return ChangeNotifierProvider(
+                      create: (_) => FormTodos(),
+                      child: Form(
+                        autovalidateMode: state.showErrorMessages,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: const [
+                              BodyField(),
+                              ColorField(),
+                              TodoList(),
+                              AddTodoTile(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              )
+            : Scaffold(
+                body: Center(
+                 child:InternetDisable(),
+                ),
+              );
+      },
     );
   }
 }
