@@ -183,9 +183,9 @@ class NoteFormPageScaffold extends StatelessWidget {
                   },
                 ),
               )
-            : Scaffold(
+            : const Scaffold(
                 body: Center(
-                 child:InternetDisable(),
+                  child: InternetDisable(),
                 ),
               );
       },

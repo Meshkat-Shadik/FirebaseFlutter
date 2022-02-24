@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_todo/application/auth/auth/auth_bloc.dart';
 import 'package:firebase_todo/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:firebase_todo/application/cubit/connectivity_cubit.dart';
+import 'package:firebase_todo/presentation/core/internet_disable.dart';
 import 'package:firebase_todo/presentation/routes/router.gr.dart';
 import 'package:firebase_todo/presentation/splash/connection_checker_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -158,7 +159,7 @@ class SignInForm extends HookWidget {
                       ),
                     ),
                   )
-                : const Text('Internet Naai');
+                : const InternetDisable();
           },
         );
       },
